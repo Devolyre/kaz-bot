@@ -1,0 +1,39 @@
+﻿KAZEROS COACH — ИСТОЧНИКИ
+Проверено 8 октября 2026 года.
+
+ОФИЦИАЛЬНАЯ ОРУЖЕЙНА AION 2 GLOBAL
+https://aion2.plaync.com/en-us/characters/index
+
+Публичные маршруты официального сайта, использованные адаптером:
+https://aion2.plaync.com/en-us/api/gameinfo/servers
+https://api-search.plaync.com/aion2global/search/v2/character
+https://aion2.plaync.com/api/character/info
+https://aion2.plaync.com/api/character/equipment
+https://aion2.plaync.com/api/character/equipment/item
+https://aion2.plaync.com/api/character/daevanion/detail
+Полные параметры, обработка ошибок и нормализация: kazeros/aion.py.
+Эти маршруты требуют параметров: простое открытие корневого URL может
+не возвращать профиль. Доступность проверена запросами нашего адаптера.
+
+Дополнительный технический ориентир при изучении формата:
+https://github.com/nuriland/aion2-api
+Это сторонний проект, не официальная документация NCSOFT. Бот использует
+свой включённый Python-адаптер и обращается к официальным доменам напрямую.
+
+DISCORD
+https://discord.com/developers/applications
+https://docs.discord.com/developers/quick-start/getting-started
+https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID
+https://docs.discord.com/developers/topics/permissions
+
+PYTHON И БИБЛИОТЕКИ
+https://www.python.org/downloads/windows/
+https://docs.python.org/3/using/windows.html
+https://pypi.org/project/discord.py/
+https://discordpy.readthedocs.io/en/stable/
+https://docs.aiohttp.org/en/stable/
+
+ПРАВИЛА РАЗБОРА
+Конкретные правила и их источники включены в resources/rules.json.
+Результат проверки связан с профилем персонажа и временем получения.
+Бот не скачивает произвольные гайды и не обращается к OpenAI.

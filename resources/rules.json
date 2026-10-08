@@ -1,0 +1,76 @@
+{
+  "version": "2026-10-08.1",
+  "checked_at": "2026-10-08",
+  "scope": "AION 2 Global; structural checks on current public profile fields, not a class meta guide",
+  "official_entrypoint": "https://aion2.plaync.com/en-us/characters/index",
+  "evidence": {
+    "origin": "NC official Global character profile and item/Daevanion responses, fetched live on 2026-10-08",
+    "per_action_source": "The exact snapshot profile_url; a comparison includes both profile URLs",
+    "per_action_data_time": "snapshot.fetched_at (fetch time, not guaranteed game-save time)",
+    "limits": "No Korean or Taiwanese numeric limits, costs, rates, launch recipes, level routes, or class-meta thresholds are copied into the engine. Role/goal matching is a disclosed heuristic based on returned effect text."
+  },
+  "rules": [
+    {
+      "id": "empty_magic_sockets",
+      "source": "https://aion2.plaync.com/en-us/characters/index",
+      "source_checked_at": "2026-10-08",
+      "evidence_fields": ["item.magicStoneSlotCount", "item.magicStoneStat"],
+      "requires": "Known nonnegative capacity and explicitly returned valid occupancy list",
+      "conclusion": "Report measured empty slots and suggest checking a suitable stone and fee in game",
+      "does_not_infer": "Missing list means unknown, not empty; no stone ID, BIS stat, price or guaranteed gain"
+    },
+    {
+      "id": "empty_god_sockets",
+      "source": "https://aion2.plaync.com/en-us/characters/index",
+      "source_checked_at": "2026-10-08",
+      "evidence_fields": ["item.godStoneSlotCount", "item.godStoneStat"],
+      "requires": "Known nonnegative capacity and explicitly returned valid occupancy list",
+      "conclusion": "Report measured empty slots only",
+      "does_not_infer": "An absent godStoneStat field is never evidence of a missing stone"
+    },
+    {
+      "id": "enchant_review",
+      "source": "https://aion2.plaync.com/en-us/characters/index",
+      "source_checked_at": "2026-10-08",
+      "evidence_fields": ["item.enchantLevel", "item.maxEnchantLevel"],
+      "requires": "Known current level and item-specific cap, current < cap",
+      "conclusion": "Check the next single increment, using the cap only as a boundary",
+      "does_not_infer": "No universal cap, safe enchant level, probability, price, investment recommendation or DPS simulation"
+    },
+    {
+      "id": "daevanion_equipped_skills",
+      "source": "https://aion2.plaync.com/en-us/characters/index",
+      "source_checked_at": "2026-10-08",
+      "evidence_fields": ["skill.skillList.equip", "skill.skillList.name", "nodeList.open", "nodeList.effectList"],
+      "requires": "Open board, explicitly closed nonempty node, exact skill name in the returned effect and an explicitly equipped skill",
+      "conclusion": "Name a real node that can add a displayed effect to an equipped skill; ask the player to verify path and resources",
+      "does_not_infer": "No free points, ready path, priority of a particular skill, or assertion that all board nodes should be opened"
+    },
+    {
+      "id": "daevanion_role_stats",
+      "source": "https://aion2.plaync.com/en-us/characters/index",
+      "source_checked_at": "2026-10-08",
+      "evidence_fields": ["nodeList.open", "nodeList.type", "nodeList.effectList"],
+      "requires": "Explicitly closed real node with a returned effect whose words correspond to the chosen role, excluding opposite PvE/PvP effects",
+      "conclusion": "Offer a node as a candidate for inspection",
+      "does_not_infer": "No optimal path, measured battle gain, available points or total cost"
+    },
+    {
+      "id": "title_goal_review",
+      "source": "https://aion2.plaync.com/en-us/characters/index",
+      "source_checked_at": "2026-10-08",
+      "evidence_fields": ["title.titleList.equipCategory", "title.titleList.equipStatList"],
+      "requires": "Explicit normalized equipped=true and a PvE/PvP effect opposite to the requested goal",
+      "conclusion": "Suggest comparing all title bonuses with owned alternatives in game",
+      "does_not_infer": "The live titleList has no explicit equipped field, so default normalizer keeps equipped=null and this rule stays silent. Display title ID=0 never means no stat titles."
+    },
+    {
+      "id": "reference_comparison",
+      "source": "https://aion2.plaync.com/en-us/characters/index",
+      "source_checked_at": "2026-10-08",
+      "requires": "Same known Global region and class; user-declared matching goal and role in reference.coach_context",
+      "conclusion": "Compare matching slots, identical item/skill IDs and exact board/node IDs as optional targets",
+      "does_not_infer": "A higher GS/CP, a different item rarity, more open nodes, or a higher skill level does not prove the reference build is stronger or optimal"
+    }
+  ]
+}

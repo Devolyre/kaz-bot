@@ -1,0 +1,23 @@
+KAZEROS Bothost 1.1.1 — validation record (2026-10-08)
+
+Base: KAZEROS_v1.1.zip from this conversation.
+Changed: hosting entrypoint, environment configuration, token aliases,
+         persistent SQLite location, deployment manifest, startup messages.
+Unchanged: main Discord panel design and game recommendation rules.
+
+Python syntax compilation: PASS.
+Hosting tests: 19 PASS.
+Coach rule tests: 14 PASS.
+Aion adapter tests (mocked HTTP / fixture data): 21 PASS.
+Total executed unit tests: 54 PASS.
+Missing configuration startup: exits with code 2 and actionable message; PASS.
+
+NOT RUN: Discord UI test_app.py (discord.py unavailable).
+NOT RUN: exact pinned aiohttp 3.14.4 (tests used installed aiohttp 3.13.3).
+NOT RUN: live Discord login, real Aion character requests, Docker build,
+         deployment to user's Bothost account.
+Reason: dependency installation blocked by container DNS/network error.
+Dependencies remain the project's discord.py==2.7.1 and aiohttp==3.14.4.
+
+No real tokens, local config.json, user database, cache, compiled Python,
+Windows venv, or original hosting account HTML are included in the ZIP.
